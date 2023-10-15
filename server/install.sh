@@ -852,8 +852,6 @@ function updateHysteriaCore(){
 	if [ -f "/etc/hihy/bin/appS" ]; then
 		localV=`/etc/hihy/bin/appS -v | cut -d " " -f 3`
 		remoteV=`curl --head -s https://github.com/apernet/hysteria/releases/latest | grep -i location | grep -o 'tag/[^[:space:]]*' | sed 's/tag\///;s/ //g'`
-		#兼容v2发布后的v1版本更新（暂时性的，下个版本移除）
-		remoteV="v1.3.5"
 		if [ -z $remoteV ];then
 			echoColor red "Network Error: Can't connect to Github!"
 			exit
@@ -952,8 +950,6 @@ function hyCoreNotify(){
 	if [ -f "/etc/hihy/bin/appS" ]; then
   		localV=`/etc/hihy/bin/appS -v | cut -d " " -f 3`
 		remoteV=`curl --head -s https://github.com/apernet/hysteria/releases/latest | grep -i location | grep -o 'tag/[^[:space:]]*' | sed 's/tag\///;s/ //g'`
-		#兼容v2发布后的v1版本更新（暂时性的，下个版本移除）
-		remoteV="v1.3.5"
 		if [ -z $remoteV ];then
 			echoColor red "Network Error: Can't connect to Github for checking the hysteria version!"
 		else
