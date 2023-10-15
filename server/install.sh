@@ -820,7 +820,6 @@ EOF
 function downloadHysteriaCore(){
 	version=`curl --head -s https://github.com/apernet/hysteria/releases/latest | grep -i location | grep -o 'tag/[^[:space:]]*' | sed 's/tag\///;s/ //g'`
 	#兼容v2发布后的v1版本更新（暂时性的，下个版本移除）
-	version="v1.3.5"
 	echo -e "The Latest hysteria version:"`echoColor red "${version}"`"\nDownload..."
 	if [ -z ${version} ];then
 		echoColor red "[Network error]: Failed to get the latest version of hysteria in Github!"
@@ -985,8 +984,6 @@ function install()
 	mkdir -p /etc/hihy/bin /etc/hihy/conf /etc/hihy/cert  /etc/hihy/result
     echoColor purple "Ready to install.\n"
     version=`curl --head -s https://github.com/apernet/hysteria/releases/latest | grep -i location | grep -o 'tag/[^[:space:]]*' | sed 's/tag\///;s/ //g'`
-    #兼容v2发布后的v1版本更新（暂时性的，下个版本移除）
-	version="v1.3.5"
 	checkSystemForUpdate
 	downloadHysteriaCore
 	setHysteriaConfig
